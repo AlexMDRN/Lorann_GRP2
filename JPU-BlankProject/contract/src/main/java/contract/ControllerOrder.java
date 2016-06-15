@@ -11,5 +11,9 @@ public enum ControllerOrder {
 	English, /** The French. */
 	Francais, /** The Deutch. */
 	Deutsch, /** The Indonesia. */
-	Indonesia
+	Indonesia,
+	Up,
+	Down,
+	Right,
+	Left
 }

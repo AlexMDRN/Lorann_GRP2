@@ -36,7 +36,7 @@ public class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
-		this.view.printMessage("Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue d votre choix.");
+		this.view.printMessage("Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue de votre choix.");
 	}
 
 	/**
@@ -77,6 +77,18 @@ public class Controller implements IController {
 				break;
 			case Indonesia:
 				this.model.loadMessage("ID");
+				break;
+			case Up:
+				System.out.println("We're goin' up !");
+				break;
+			case Down:
+				System.out.println("We're goin' down !");
+				break;
+			case Right:
+				System.out.println("We're goin' right !");
+				break;
+			case Left:
+				System.out.println("To the left babyyy !");
 				break;
 
 			default:
