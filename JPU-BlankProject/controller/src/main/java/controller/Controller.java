@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package controller;
 
 import contract.ControllerOrder;
@@ -97,3 +98,93 @@ public class Controller implements IController {
 	}
 
 }
+=======
+package controller;
+
+import contract.ControllerOrder;
+import contract.IController;
+import contract.IModel;
+import contract.IView;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Controller.
+ */
+public class Controller implements IController {
+
+	/** The view. */
+	private IView		view;
+
+	/** The model. */
+	private IModel	model;
+
+	/**
+	 * Instantiates a new controller.
+	 *
+	 * @param view
+	 *          the view
+	 * @param model
+	 *          the model
+	 */
+	public Controller(final IView view, final IModel model) {
+		this.setView(view);
+		this.setModel(model);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see contract.IController#control()
+	 */
+	public void control() {
+		this.view.printMessage("Appuyer sur les touches de mouvement pour afficher votre .... MOUVEMENT");
+	}
+
+	/**
+	 * Sets the view.
+	 *
+	 * @param view
+	 *          the new view
+	 */
+	private void setView(final IView view) {
+		this.view = view;
+	}
+
+	/**
+	 * Sets the model.
+	 *
+	 * @param model
+	 *          the new model
+	 */
+	private void setModel(final IModel model) {
+		this.model = model;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.IController#orderPerform(contract.ControllerOrder)
+	 */
+	public void orderPerform(final ControllerOrder controllerOrder) {
+		switch (controllerOrder) {
+			
+			case Up:
+				System.out.println("We're goin' up !");
+				break;
+			case Down:
+				System.out.println("We're goin' down !");
+				break;
+			case Right:
+				System.out.println("We're goin' right !");
+				break;
+			case Left:
+				System.out.println("To the left babyyy !");
+				break;
+
+			default:
+				break;
+		}
+	}
+
+}
+>>>>>>> origin/master
