@@ -1,6 +1,11 @@
 package view;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.util.Timer;
 
 import javax.swing.SwingUtilities;
 
@@ -14,7 +19,12 @@ import contract.IView;
  *
  * @author Jean-Aymeric Diet
  */
+
+
+
 public class View implements IView, Runnable {
+	
+	boolean running = true;
 
 	/** The frame. */
 	private final ViewFrame viewFrame;
@@ -28,6 +38,32 @@ public class View implements IView, Runnable {
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model);
 		SwingUtilities.invokeLater(this);
+	}
+	
+	private Thread thread;
+	private BufferStrategy bs;
+	private Graphics g;
+	
+	private BufferedImage testImage;
+	
+	public synchronized void start(){
+		if(running)
+			return;
+		running = true;
+		thread = new Thread(this);
+		thread.start();
+	}
+	
+	public synchronized void stop(){
+		if(!running)
+			return;
+		running = false;
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -69,13 +105,54 @@ public class View implements IView, Runnable {
 		this.viewFrame.printMessage(message);
 	}
 
+	
+	
+		private void init(){
+			System.out.println("Init");
+			testImage = ImageLoader.LoadImage("model/res/textures/bone.png");}
+		
+		private void tick(){
+			System.out.println("Tick");
+		}
+		
+		private void render(){
+			System.out.println("Render");
+			bs = ViewFrame.getCanvas().getBufferStrategy();
+			if(bs == null){
+				ViewFrame.getCanvas().createBufferStrategy(3);
+				return;
+			}
+			g = bs.getDrawGraphics();
+			
+			g.clearRect(0, 0, ViewFrame.width, ViewFrame.height);
+			
+			
+			//Draw
+			g.setColor(Color.BLACK);
+			g.fillRect(0,0, ViewFrame.width, ViewFrame.height);
+			//g.drawRect(10, 50, 50, 70);
+			
+			//End
+			
+			bs.show();
+			g.dispose();
+		}
 	/*
 	 * (non-Javadoc)
 	 *
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
+		init();
 		this.viewFrame.setVisible(true);
+		System.out.println("Poulet");
+		
+		while(running){
+			tick();
+			render();
+			System.out.println("Poulet2");
+		}
+		stop();
 	}
 
 	/**
