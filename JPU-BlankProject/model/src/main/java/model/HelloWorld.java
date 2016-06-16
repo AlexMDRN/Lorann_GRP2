@@ -7,6 +7,8 @@ package model;
  */
 class HelloWorld extends Entity {
 
+
+
 	/** The id. */
 	private int			id;
 

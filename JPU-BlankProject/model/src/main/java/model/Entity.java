@@ -17,7 +17,7 @@ public class Entity {
 	public int getPositionY() {
 		return positionY;
 	}
-	public Sprite getSprite() {
+	public Sprite getSprite(Sprite sprite) {
 		return sprite;
 	}
 
