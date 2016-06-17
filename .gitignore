@@ -45,3 +45,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+JPU-BlankProject/view/src/main/java/view/View.java
+*.java
+JPU-BlankProject/controller/src/main/java/controller/Controller.java
+JPU-BlankProject/contract/src/main/java/contract/ControllerOrder.java
+*.java
