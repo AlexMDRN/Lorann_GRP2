@@ -1,36 +1,14 @@
-package main;
+package model;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Types;
+//The required package in order to use such databases
+import java.sql.*;
 
-import controller.Controller;
-import model.Model;
-import view.View;
-
-/**
- * The Class Main.
- *
- * @author Jean-Aymeric Diet
- */
-public abstract class Main {
-
-	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *          the arguments
-	 */
-	public static void main(final String[] args) {
-		final Model model = new Model();
-		final View view = new View(model);
-		final Controller controller = new Controller(view, model);
-		view.setController(controller);
-		controller.control();
-		
-		final String url = "jdbc:mysql://localhost/lorannmap?autoReconnect=true&useSSL=false";
+public class ManageDB{
+	
+	
+	public void manageDataBase(){
+ 
+		   final String url = "jdbc:mysql://localhost/lorannmap?autoReconnect=true&useSSL=false";
 		   final String user = "root";
 		   final String password = "";
 		   Connection connection = null;
@@ -79,7 +57,6 @@ public abstract class Main {
 		         sqle.printStackTrace();
 		      }
 		   }
-		   System.out.println("Cleaning the DataBase and connectors : check");
-		
+		   System.out.println("Goodbye!");
 	}
 }
