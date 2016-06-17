@@ -4,6 +4,8 @@ import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.Canvas;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,6 +27,12 @@ class ViewFrame extends JFrame implements KeyListener {
 	private IController				controller;
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
+	
+	/** The Canvas */
+	private static Canvas canvas;
+	
+	static final int width = 1024;
+	static final int height = 768;
 
 	/**
 	 * Instantiates a new view frame.
@@ -131,8 +139,20 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setResizable(false);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
+		this.setSize(width, height);
 		this.setLocationRelativeTo(null);
+		
+		canvas = new Canvas();
+		canvas.setPreferredSize(new Dimension(width, height));
+		canvas.setMaximumSize(new Dimension(width, height));
+		canvas.setMinimumSize(new Dimension(width, height));
+		
+		this.add(canvas);
+		this.pack();
+	}
+	
+	public static Canvas getCanvas(){
+		return canvas;
 	}
 
 	/**
