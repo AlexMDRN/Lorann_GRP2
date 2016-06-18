@@ -6,9 +6,9 @@ import java.sql.*;
 public class ManageDB{
 	
 	
-	public void manageDataBase(){
+	public static void manageDataBase(){
  
-		   final String url = "jdbc:mysql://localhost/lorannmap?autoReconnect=true&useSSL=false";
+		final String url = "jdbc:mysql://localhost/lorannmap?autoReconnect=true&useSSL=false";
 		   final String user = "root";
 		   final String password = "";
 		   Connection connection = null;
@@ -57,6 +57,7 @@ public class ManageDB{
 		         sqle.printStackTrace();
 		      }
 		   }
-		   System.out.println("Goodbye!");
+		   System.out.println("Cleaning the DataBase and connectors : check");
+		
 	}
 }
